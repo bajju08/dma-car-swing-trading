@@ -2,8 +2,10 @@
 Database schema management - run migrations automatically on startup.
 """
 
+import logging
 from sqlalchemy import MetaData, Table, Column, Integer, String, Float, Date, DateTime, Boolean, Text
-from .utils import get_db_engine, logger
+
+logger = logging.getLogger(__name__)
 
 
 def create_scan_history_table(engine):
