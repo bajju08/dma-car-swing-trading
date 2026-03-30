@@ -45,6 +45,15 @@ if hasattr(st, 'secrets'):
 
 engine = get_db_engine(config=config)
 
+# Auto-create database tables on startup (for cloud deployment)
+try:
+    from src.db_schema import run_all_migrations
+    run_all_migrations(engine)
+    st.write("✅ Database tables initialized", type="info")  # Optional: show in dev mode
+except Exception as e:
+    st.error(f"Database initialization error: {e}")
+    logger.error(f"DB migration failed: {e}")
+
 # Title
 st.title("📈 DMA-DMA+CAR Swing Trading Platform")
 st.markdown("Institutional-grade swing trading system based on DMA crossovers and CAR momentum")
