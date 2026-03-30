@@ -1,0 +1,33 @@
+ENHANCED TRADING LOG  ▸  DMA-DMA + CAR Strategy  ▸  Yellow = Manual Input  |  Blue = Auto Formula,Unnamed: 1,Unnamed: 2,Unnamed: 3,Unnamed: 4,Unnamed: 5,Unnamed: 6,Unnamed: 7,Unnamed: 8,Unnamed: 9,Unnamed: 10,Unnamed: 11,Unnamed: 12,Unnamed: 13,Unnamed: 14,Unnamed: 15,Unnamed: 16,Unnamed: 17,Unnamed: 18,Unnamed: 19,Unnamed: 20,Unnamed: 21,Unnamed: 22,Unnamed: 23,Unnamed: 24
+Chain #,"Trade Slot
+(Row)","Investment
+₹","Target @ 6.28%
+₹",Entry Date,"Entry Day
+(DOW)",Stock Name,"Entry Price
+₹","Target Price
+₹","Avg Reserve
+₹ (50%)","Profit Booked
+Date",Avg 1 Date,Avg 2 Date,Avg 3 Date,"Current Price
+₹","% from Target
+(M/I-1)×100","% Unrealised
+(M/H-1)×100",Days Held,"30-Day Review
+Due Date","DMA Status
+(Daily Check)","CAR Status
+(Daily Check)","Conviction
+Score @ Entry",Status,"STCG Tax
+(20%)",Notes
+Manual,Manual,From Comp Model,=C x 1.0628 AUTO,2026-03-18 00:00:00,"=TEXT(E,""DDD"") AUTO",Manual,⭐ Manual (critical),=H x 1.0628 AUTO,=C x 0.5 AUTO,Manual when booked,Signal-driven,Signal-driven,Signal-driven,⭐ Manual daily,=(M/I-1)x100 AUTO,=(M/H-1)x100 AUTO,=Days AUTO,=E+30 AUTO,Manual daily,Manual daily,Manual at entry,AUTO formula,AUTO,Manual
+1,1,15000,15942,2026-03-18 00:00:00,Wed,Powergrid,293.3,311.71924,7500,,,,,297.65,-4.513433306,1.483123082,12,2026-04-17 00:00:00,In Bull Run,Avoid/Hold,5,OPEN ⏳,,⚠ 40 days open – apply 30-day review TODAY
+1,6,16879.31,17939.33067,2026-03-18 00:00:00,Wed,GMRAirports,100.72,107.045216,8439.66,,2026-03-19 00:00:00,2026-03-24 00:00:00,,98.9,-7.609135937,-1.806989674,12,2026-04-17 00:00:00,In Bear Run,Avoid/Hold,5,OPEN ⏳,,Averaged 19 Mar. Recalculate avg cost price manually
+1,11,18994.07,20186.8976,2026-03-18 00:00:00,Wed,NLCINDIA,264.6,281.21688,9497.04,,,,,267.45,-4.895467157,1.077097506,12,2026-04-17 00:00:00,In Bull Run,Avoid/Hold,5,OPEN ⏳,,26 days open – 30-day review due 27 Mar
+1,16,21373.79,22716.06401,2026-03-18 00:00:00,Wed,AuroPharma,,,10686.9,2026-03-11 00:00:00,,,,,,,-7,2026-04-17 00:00:00,,,7,CLOSED ✅,,✅ PROFIT BOOKED in 7 days – template trade
+2,2,15358.33,16322.83312,2026-03-18 00:00:00,Wed,Sunpharma,1840,1955.552,7679.17,,2026-03-24 00:00:00,,,1799.1,-8.00040091,-2.222826087,12,2026-04-17 00:00:00,In Bull Run,Buy/Average Out,7,OPEN ⏳,,12 days open – hold
+2,7,17282.53,18367.87288,2026-03-18 00:00:00,Wed,Sonacoms,521.75,554.5159,8641.27,,2026-03-24 00:00:00,,,514.45,-7.225383438,-1.399137518,12,2026-04-17 00:00:00,In Bull Run,Buy/Average Out,10,OPEN ⏳,,⭐ BEST signal (10/10) – watch daily for target
+,13,19810,21054.068,2026-03-18 00:00:00,Wed,BSE,2830,3007.724,9905,,,,,2894.9,-3.75114206,2.293286219,12,2026-04-17 00:00:00,In Bull Run,Buy/Average Out,10,OPEN ⏳,,
+,,,0,2026-03-18 00:00:00,Wed,,,,0,,,,,,,,12,2026-04-17 00:00:00,In Bull Run,Buy/Average Out,10,OPEN ⏳,,
+,,,0,2026-03-18 00:00:00,Wed,,,,0,,,,,,,,12,2026-04-17 00:00:00,In Bull Run,Buy/Average Out,10,OPEN ⏳,,
+,,,0,2026-03-18 00:00:00,Wed,,,,0,,,,,,,,12,2026-04-17 00:00:00,In Bull Run,Buy/Average Out,10,OPEN ⏳,,
+,,,0,2026-03-18 00:00:00,Wed,,,,0,,,,,,,,12,2026-04-17 00:00:00,In Bull Run,Buy/Average Out,10,OPEN ⏳,,
+,,,0,2026-03-18 00:00:00,Wed,,,,0,,,,,,,,12,2026-04-17 00:00:00,In Bull Run,Buy/Average Out,10,OPEN ⏳,,
+,,,,,,,,,0,,,,,,,,2026-03-30 00:00:00,1900-01-30 00:00:00,In Bull Run,Buy/Average Out,10,REVIEW ⚠,,
+,,,,,,,,,,,,,,,,,2026-03-30 00:00:00,1900-01-30 00:00:00,In Bull Run,Buy/Average Out,10,REVIEW ⚠,,

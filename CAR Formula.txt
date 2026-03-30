@@ -1,0 +1,17 @@
+CAR Formula:
+=IFERROR(IF(A5="","ENTER STOCK",LET(stock,A5,raw_high,GOOGLEFINANCE(stock,"high",TODAY()-364,TODAY()),high_date,IFERROR(TO_DATE(INDEX(SORT(raw_high,2,0),2,1)),TODAY()-30),data,IFERROR(GOOGLEFINANCE(stock,"close",high_date,TODAY()),GOOGLEFINANCE(stock,"close",TODAY()-10,TODAY())),prices,INDEX(data,0,2),count_rows,ROWS(prices),cum_avg,SCAN(0,SEQUENCE(count_rows),LAMBDA(a,n,IFERROR(AVERAGE(CHOOSEROWS(prices,SEQUENCE(n))),0))),last_10_avgs,IFERROR(QUERY({IFERROR(QUERY(data,"SELECT Col1",1),SEQUENCE(count_rows)),cum_avg},"SELECT Col2 WHERE Col1 IS NOT NULL ORDER BY Col1 DESC LIMIT 10",0),{0;0;0;0;0;0;0;0;0;0}),check,IF(ROWS(last_10_avgs)<10,0,SUMPRODUCT(--(CHOOSECOLS(last_10_avgs,1)>{INDEX(last_10_avgs,2);INDEX(last_10_avgs,3);INDEX(last_10_avgs,4);INDEX(last_10_avgs,5);INDEX(last_10_avgs,6);INDEX(last_10_avgs,7);INDEX(last_10_avgs,8);INDEX(last_10_avgs,9);INDEX(last_10_avgs,10);0}))),IF(count_rows<10,"Short History",IF(check=10,"Buy/Average Out","Avoid/Hold")))),"TICKER NOT FOUND")
+
+Beta Calculation:
+=IFERROR(
+  LET(
+    sd, GOOGLEFINANCE(A5,"close",TODAY()-100,TODAY()),
+    sp, CHOOSECOLS(sd,2),
+    np, NIFTY_DATA!$B$2:$B$80,
+    n,  MIN(ROWS(sp)-2, COUNTA(np)-1),
+    sr, MAKEARRAY(n,1,LAMBDA(i,j, INDEX(sp,i+2)/INDEX(sp,i+1)-1 )),
+    nr, MAKEARRAY(n,1,LAMBDA(i,j, INDEX(np,i+1)/INDEX(np,i)-1   )),
+    ROUND(SLOPE(sr,nr),2)
+  ),
+"")
+Formula in Nifty_Data sheet in cell A1:
+=GOOGLEFINANCE("NIFTY_50","close",TODAY()-100,TODAY())

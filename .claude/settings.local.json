@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pip list:*)",
+      "Bash(python -c \"import youtube_transcript_api; print\\(youtube_transcript_api.__file__\\); import inspect; print\\(inspect.getsource\\(youtube_transcript_api.YouTubeTranscriptApi\\)\\)\")"
+    ]
+  }
+}

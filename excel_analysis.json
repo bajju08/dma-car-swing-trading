@@ -1,0 +1,185 @@
+{
+  "sheet_names": [
+    "\ud83d\udcca DASHBOARD",
+    "\ud83d\udd0d DMA SCANNER",
+    "Sheet3",
+    "NIFTY_DATA",
+    "\ud83d\udc41 NEAR-BULL WATCH",
+    "\ud83d\udccb TRADING LOG",
+    "\ud83d\udcc8 15k CHAIN",
+    "\ud83d\udcc8 20k CHAIN",
+    "\ud83d\udcc8 20k \u2192 1Cr PROJECTION"
+  ],
+  "sheets": {
+    "\ud83d\udcca DASHBOARD": {
+      "rows": 29,
+      "cols": 7,
+      "columns": [
+        "DMA-DMA + CAR ENHANCED TRADING SYSTEM  \u25b8  LIVE DASHBOARD",
+        "Unnamed: 1",
+        "Unnamed: 2",
+        "Unnamed: 3",
+        "Unnamed: 4",
+        "Unnamed: 5",
+        "Unnamed: 6"
+      ],
+      "csv_file": "__DASHBOARD.csv"
+    },
+    "\ud83d\udd0d DMA SCANNER": {
+      "rows": 502,
+      "cols": 33,
+      "columns": [
+        "DMA-DMA ENHANCED SCANNER  \u25b8  Nifty 50-250 Universe  \u25b8  Update CMP/DMA Cols B-E daily from Google Sheets",
+        "Unnamed: 1",
+        "Unnamed: 2",
+        "Unnamed: 3",
+        "Unnamed: 4",
+        "Unnamed: 5",
+        "Unnamed: 6",
+        "Unnamed: 7",
+        "Unnamed: 8",
+        "Unnamed: 9",
+        "Unnamed: 10",
+        "Unnamed: 11",
+        "Unnamed: 12",
+        "Unnamed: 13",
+        "Unnamed: 14",
+        "Unnamed: 15",
+        "Unnamed: 16",
+        "Unnamed: 17",
+        "DMA-DMA ENHANCED SCANNER  \u25b8  Nifty 50-250 Universe  \u25b8  Update CMP/DMA Cols B-E daily from Google Sheets.1",
+        "Unnamed: 19",
+        "Unnamed: 20",
+        "Unnamed: 21",
+        "Unnamed: 22",
+        "Unnamed: 23",
+        "Unnamed: 24",
+        "Unnamed: 25",
+        "Unnamed: 26",
+        "Unnamed: 27",
+        "Unnamed: 28",
+        "Unnamed: 29",
+        "Unnamed: 30",
+        "Unnamed: 31",
+        "Unnamed: 32"
+      ],
+      "csv_file": "__DMA_SCANNER.csv"
+    },
+    "Sheet3": {
+      "rows": 498,
+      "cols": 3,
+      "columns": [
+        "NSE Code",
+        "Ticker",
+        "NSE:DATAPATTNS"
+      ],
+      "csv_file": "Sheet3.csv"
+    },
+    "NIFTY_DATA": {
+      "rows": 66,
+      "cols": 2,
+      "columns": [
+        "Date",
+        "Close"
+      ],
+      "csv_file": "NIFTY_DATA.csv"
+    },
+    "\ud83d\udc41 NEAR-BULL WATCH": {
+      "rows": 13,
+      "cols": 11,
+      "columns": [
+        "NEAR-BULL WATCHLIST  \u25b8  Stocks within -5% of 200 DMA  \u25b8  These are your NEXT entry candidates \u2014 set price alerts",
+        "Unnamed: 1",
+        "Unnamed: 2",
+        "Unnamed: 3",
+        "Unnamed: 4",
+        "Unnamed: 5",
+        "Unnamed: 6",
+        "Unnamed: 7",
+        "Unnamed: 8",
+        "Unnamed: 9",
+        "Unnamed: 10"
+      ],
+      "csv_file": "__NEAR_BULL_WATCH.csv"
+    },
+    "\ud83d\udccb TRADING LOG": {
+      "rows": 16,
+      "cols": 25,
+      "columns": [
+        "ENHANCED TRADING LOG  \u25b8  DMA-DMA + CAR Strategy  \u25b8  Yellow = Manual Input  |  Blue = Auto Formula",
+        "Unnamed: 1",
+        "Unnamed: 2",
+        "Unnamed: 3",
+        "Unnamed: 4",
+        "Unnamed: 5",
+        "Unnamed: 6",
+        "Unnamed: 7",
+        "Unnamed: 8",
+        "Unnamed: 9",
+        "Unnamed: 10",
+        "Unnamed: 11",
+        "Unnamed: 12",
+        "Unnamed: 13",
+        "Unnamed: 14",
+        "Unnamed: 15",
+        "Unnamed: 16",
+        "Unnamed: 17",
+        "Unnamed: 18",
+        "Unnamed: 19",
+        "Unnamed: 20",
+        "Unnamed: 21",
+        "Unnamed: 22",
+        "Unnamed: 23",
+        "Unnamed: 24"
+      ],
+      "csv_file": "__TRADING_LOG.csv"
+    },
+    "\ud83d\udcc8 15k CHAIN": {
+      "rows": 281,
+      "cols": 10,
+      "columns": [
+        "15k COMPOUNDING MODEL  \u25b8  Sequential 6.28% Profit Chain  \u25b8  Tax: 20% STCG (Post Budget Jul 2024)  \u25b8  Reinvestment: 50% of after-tax profit",
+        "Unnamed: 1",
+        "Unnamed: 2",
+        "Unnamed: 3",
+        "Unnamed: 4",
+        "Unnamed: 5",
+        "Unnamed: 6",
+        "Unnamed: 7",
+        "Unnamed: 8",
+        "Unnamed: 9"
+      ],
+      "csv_file": "__15k_CHAIN.csv"
+    },
+    "\ud83d\udcc8 20k CHAIN": {
+      "rows": 278,
+      "cols": 10,
+      "columns": [
+        "20k COMPOUNDING MODEL  \u25b8  Same logic as 15k but starting at \u20b920,000 per chain",
+        "Unnamed: 1",
+        "Unnamed: 2",
+        "Unnamed: 3",
+        "Unnamed: 4",
+        "Unnamed: 5",
+        "Unnamed: 6",
+        "Unnamed: 7",
+        "Unnamed: 8",
+        "Unnamed: 9"
+      ],
+      "csv_file": "__20k_CHAIN.csv"
+    },
+    "\ud83d\udcc8 20k \u2192 1Cr PROJECTION": {
+      "rows": 109,
+      "cols": 6,
+      "columns": [
+        "PROJECTION: \u20b920,000 \u2192 \u20b91 CRORE  \u25b8  Sequential 6.28% Compounding Without Tax/Withdrawal (Gross Model)",
+        "Unnamed: 1",
+        "Unnamed: 2",
+        "Unnamed: 3",
+        "Unnamed: 4",
+        "Unnamed: 5"
+      ],
+      "csv_file": "__20k___1Cr_PROJECTION.csv"
+    }
+  }
+}

@@ -1,0 +1,179 @@
+//@version=6
+indicator("DMA-DMA+CAR Enhanced", overlay=true, max_labels_count=500, max_lines_count=500)
+
+// ============ INPUTS ============
+i_show_dma = input.bool(true, "Show DMAs")
+i_show_label = input.bool(true, "Show Signal Label")
+i_show_target = input.bool(true, "Show Target Line")
+i_show_fib = input.bool(false, "Show Fibonacci Levels")
+i_entry_price = input.float(0.0, "Entry Price (0 = auto)", group="Entry", tooltip="Set your entry price to see target line. Leave 0 to hide.")
+i_target_mult = input.float(1.0628, "Target Multiplier", step=0.0001, group="Entry", tooltip="6.28% = 2π compound target")
+
+// Indicator settings
+i_dma_periods = input.string("50,100,200", "DMA Periods", group="Indicators")
+i_show_bg = input.bool(true, "Color Background by Regime", group="Indicators")
+
+// User-adjustable scores (for manual override or display)
+i_enhanced_score = input.int(0, "Enhanced Score (0-15)", minval=0, maxval=15, group="Strategy Scores")
+i_speed_score = input.int(0, "Speed Score (0-10)", minval=0, maxval=10, group="Strategy Scores")
+i_car_signal = input.string("Avoid/Hold", "CAR Signal", options=["Buy/Average Out", "Avoid/Hold"], group="Strategy Scores")
+
+// Alerts
+i_alert_bull_run = input.bool(true, "Alert: Bull Run Start")
+i_alert_car_buy = input.bool(true, "Alert: CAR Buy/Average")
+i_alert_target = input.bool(true, "Alert: Target Hit")
+i_alert_bear = input.bool(true, "Alert: Bear Run")
+
+// ============ CALCULATIONS ============
+// Parse DMA periods
+[ma50_len, ma100_len, ma200_len] = str.split(i_dma_periods, ",")
+ma50_len = int(ma50_len)
+ma100_len = int(ma100_len)
+ma200_len = int(ma200_len)
+
+// Calculate DMAs
+ma50 = ta.sma(close, ma50_len)
+ma100 = ta.sma(close, ma100_len)
+ma200 = ta.sma(close, ma200_len)
+
+// Determine DMA status
+price_above_50 = close > ma50
+price_above_100 = close > ma100
+price_above_200 = close > ma200
+
+bull_run = price_above_50 and price_above_100 and price_above_200
+bear_run = not price_above_50 and not price_above_100 and not price_above_200
+unconfirmed = not (bull_run or bear_run)
+
+golden = ma50 > ma100 and ma100 > ma200
+inverted = ma50 < ma100 and ma100 < ma200
+
+dma_status_str = bull_run ? (golden ? "Golden Bull" : "Bull") :
+                 bear_run ? (inverted ? "Inverted Bear" : "Bear") :
+                 "Unconfirmed"
+
+// Background color
+bg_color = bull_run ? color.new(color.green, 85) :
+           bear_run ? color.new(color.red, 85) :
+           color.new(color.orange, 85)
+
+// ============ PLOTTING ============
+// Fill background
+if i_show_bg
+    bgcolor(bg_color, title="Regime Background")
+
+// Plot DMAs
+if i_show_dma
+    p50 = plot(ma50, "50 DMA", color=color.new(color.blue, 0), linewidth=2)
+    p100 = plot(ma100, "100 DMA", color=color.new(color.orange, 0), linewidth=2)
+    p200 = plot(ma200, "200 DMA", color=color.new(color.red, 0), linewidth=2)
+    // Also plot 200 DMA with wider line for emphasis
+    plot(ma200, "", color=color.new(color.red, 50), linewidth=4)
+
+// Target line
+target_price = i_entry_price > 0 ? i_entry_price * i_target_mult : na
+if i_show_target and not na(target_price)
+    hline(target_price, "Target", color=color.new(color.green, 0), linestyle=hline.style_dashed, linewidth=2)
+    // Label on right
+    label.new(bar_index, target_price, f"Target: {target_price:.2f}",
+              color=color.green, textcolor=color.white, style=label.style_label_right,
+              yloc=yloc.price, size=size.small)
+
+// Entry line
+if i_entry_price > 0
+    hline(i_entry_price, "Entry", color=color.new(color.blue, 0), linestyle=hline.style_dotted, linewidth=1)
+
+// Fibonacci (optional)
+if i_show_fib and i_entry_price > 0 and not na(target_price)
+    fib_levels = [0.382, 0.5, 0.618, 0.786, 1.0]
+    for level in fib_levels
+        fib_price = i_entry_price + (target_price - i_entry_price) * level
+        plot(fib_price, "", color=color.new(color.gray, 70), linewidth=1, display=display.none)
+
+// ============ SIGNAL LABEL ============
+if i_show_label
+    // Build label text
+    label_text = ""
+    if barstate.islast
+        label_text := "DMA-DMA+CAR\n"
+        label_text := label_text + dma_status_str + "\n"
+        label_text := label_text + "CAR: " + i_car_signal + "\n"
+        label_text := label_text + "Score: " + str.tostring(i_enhanced_score) + "/15\n"
+        label_text := label_text + "Speed: " + str.tostring(i_speed_score) + "/10"
+
+        // Determine label position and color
+        var float label_y = na
+        var color label_bg = color.gray
+
+        if bull_run and i_enhanced_score >= 10 and i_speed_score >= 4
+            label_y := low * 0.98
+            label_bg := color.new(color.green, 0)
+            label_text := "✅ PRIME BUY SIGNAL\n" + label_text
+        else if bull_run and i_enhanced_score >= 8
+            label_y := low * 0.98
+            label_bg := color.new(color.lime, 0)
+            label_text := "🟢 BUY SIGNAL\n" + label_text
+        else if bull_run
+            label_y := low * 0.98
+            label_bg := color.new(color.yellow, 0)
+            label_text := "🟡 WATCH\n" + label_text
+        else if bear_run
+            label_y := high * 1.02
+            label_bg := color.new(color.red, 0)
+            label_text := "🔴 BEAR RUN – EXIT\n" + label_text
+        else
+            label_y := close
+            label_bg := color.new(color.orange, 0)
+            label_text := "🟠 UNCONFIRMED\n" + label_text
+
+        label.new(bar_index, label_y, label_text,
+                  color=label_bg, textcolor=color.white, style=label.style_label_left,
+                  yloc=yloc.price, size=size.normal, textalign=text.align_left)
+
+// ============ ALERT CONDITIONS ============
+// Bull Run start alert
+bull_run_alert = i_alert_bull_run and bull_run and (not bull_run[1])
+alertcondition(bull_run_alert, "Bull Run Started", "Stock entered Bull Run")
+
+// CAR Buy/Average alert
+car_buy_alert = i_alert_car_buy and (i_car_signal == "Buy/Average Out") and (i_car_signal != i_car_signal[1])
+alertcondition(car_buy_alert, "CAR Buy/Average", "CAR signal turned Buy/Average Out")
+
+// Target hit alert
+target_hit_alert = i_alert_target and (high >= target_price) and (i_entry_price > 0)
+alertcondition(target_hit_alert, "Target Hit", "Price reached target")
+
+// Bear Run alert
+bear_alert = i_alert_bear and bear_run and (not bear_run[1])
+alertcondition(bear_alert, "Bear Run Started", "Stock entered Bear Run – exit")
+
+// ============ STRATEGY TABLE (in indicator's status line) ============
+// Show a small table in the indicator's info (not in script for brevity)
+// User should manually input scores based on their external scanner
+
+// ============ HOW TO USE ============
+// 1. Apply this indicator to any chart (NSE stock on Daily timeframe)
+// 2. Set Entry Price (your actual entry)
+// 3. The indicator will show:
+//    - 50 (blue), 100 (orange), 200 (red) DMAs
+//    - Colored background: green=Bull, red=Bear, orange=Unconfirmed
+//    - Target line (green dashed)
+//    - Signal label on left with DMA status, CAR, scores
+// 4. Alerts:
+//    - When price crosses above all 3 DMAs → Bull Run alert
+//    - When CAR turns "Buy/Average" → alert (you must set CAR manually)
+//    - When price hits target → alert
+//    - When all 3 DMAs broken → Bear Run alert
+// 5. Use with dashboard:
+//    - Dashboard gives you Enhanced Score and Speed Score
+//    - Enter those scores in indicator inputs
+//    - The label will show "PRIME BUY" if scores meet thresholds
+
+// ============ VERSION HISTORY ============
+// v1.0 – Initial release (Mar 2026)
+// Features:
+// - DMA plotting with background coloring
+// - Target line from entry price
+// - Score display inputs
+// - Alert conditions for regime changes and target
+// - Compatible with TradingView Pine Script v6

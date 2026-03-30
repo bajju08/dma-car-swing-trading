@@ -1,0 +1,10 @@
+venv/
+__pycache__/
+*.pyc
+data/*.db
+recommendations.json
+*.log
+config_local.yaml
+.DS_Store
+.git/
+.github/

@@ -1,0 +1,30 @@
+{
+  "sV1toZP3xXU": {
+    "status": "failed",
+    "error": "type object 'YouTubeTranscriptApi' has no attribute 'get_transcript'"
+  },
+  "hLYGIhMYO7M": {
+    "status": "failed",
+    "error": "type object 'YouTubeTranscriptApi' has no attribute 'get_transcript'"
+  },
+  "enDmS5AAlis": {
+    "status": "failed",
+    "error": "type object 'YouTubeTranscriptApi' has no attribute 'get_transcript'"
+  },
+  "5FMYp3TMhvY": {
+    "status": "failed",
+    "error": "type object 'YouTubeTranscriptApi' has no attribute 'get_transcript'"
+  },
+  "9EKL2Th6cdA": {
+    "status": "failed",
+    "error": "type object 'YouTubeTranscriptApi' has no attribute 'get_transcript'"
+  },
+  "XRZAYcHT2EQ": {
+    "status": "failed",
+    "error": "type object 'YouTubeTranscriptApi' has no attribute 'get_transcript'"
+  },
+  "GBU3bJgRMes": {
+    "status": "failed",
+    "error": "type object 'YouTubeTranscriptApi' has no attribute 'get_transcript'"
+  }
+}

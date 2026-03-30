@@ -1,0 +1,15 @@
+{
+  "sheets": {},
+  "sheet_names": [
+    "\ud83d\udcca DASHBOARD",
+    "\ud83d\udd0d DMA SCANNER",
+    "Sheet3",
+    "NIFTY_DATA",
+    "\ud83d\udc41 NEAR-BULL WATCH",
+    "\ud83d\udccb TRADING LOG",
+    "\ud83d\udcc8 15k CHAIN",
+    "\ud83d\udcc8 20k CHAIN",
+    "\ud83d\udcc8 20k \u2192 1Cr PROJECTION"
+  ],
+  "fatal_error": "'charmap' codec can't encode character '\\U0001f4ca' in position 12: character maps to <undefined>"
+}

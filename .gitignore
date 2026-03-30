@@ -1,0 +1,86 @@
+# Local config with secrets
+config_local*
+.env
+.env.local
+
+# Database
+data/market_data.db
+data/*.db
+
+# Generated outputs
+recommendations.json
+backtest_results.json
+
+# Virtual environment
+venv/
+env/
+.venv
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+temp/
+
+# Exported CSVs
+*_export.csv
+# Keep source data CSVs (Sheet3.csv, sector_map_sample.csv, etc.)
+# But ignore large generated data files
+data/*.db
+!data/.gitkeep
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Test/debug scripts (keep only production files)
+test_*.py
+debug_*.py
+check_*.py
+backtest_simple.py
+instrument.py
+check_db.py
+clean_db.py
+test_fetch.py
+test_insert.py
+test_signals.py
+test_dates.py
+test_older_dates.py
+analyze_*.py
+fetch_*.py
+get_transcripts*.py
+preview_transcripts.py
+extract_excel.py
+excel_analysis*.json
+strategy_transcripts.json
+youtube_transcripts.json
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg

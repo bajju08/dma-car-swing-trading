@@ -1,0 +1,83 @@
+# DMA-DMA+CAR Trading Platform Configuration
+# Copy this to config_local.yaml and fill in your credentials
+
+# Dhan API credentials (optional – if not set, falls back to yfinance)
+dhan:
+  client_id: ""  # Your Dhan client ID (integer as string)
+  access_token: ""  # Generate from Dhan API portal
+  api_key: ""  # Your Dhan API key
+  secret: ""  # Your Dhan secret
+
+# Telegram alert settings
+telegram:
+  bot_token: ""  # From @BotFather
+  chat_id: ""  # Your personal chat ID (get from @userinfobot)
+
+# Email alert settings
+email:
+  smtp_server: "smtp.gmail.com"
+  smtp_port: 587
+  sender_email: ""  # Your email
+  sender_password: ""  # App password (for Gmail)
+  recipients: []  # List of emails to receive alerts
+
+# Strategy parameters
+strategy:
+  # Filters
+  min_enhanced_score: 8  # Minimum Enhanced Score (0-15) to enter
+  min_speed_score: 4  # Minimum Speed Score (0-10)
+  beta_min: 0.8  # Minimum beta to consider
+  volume_ratio_min: 1.2  # Minimum volume ratio (today/avg)
+  rsi_max: 70  # Maximum RSI to avoid overbought
+  adx_min: 18  # Minimum ADX for trend strength
+  liquidity_min_volume: 500000  # Minimum average daily volume (shares)
+
+  # Market regime thresholds
+  bull_percentage_full: 0.15  # ≥15% stocks Bull Run → FULL BULL
+  bull_percentage_cautious: 0.07  # 7-15% → CAUTIOUS
+
+  # Position sizing (multipliers based on regime)
+  position_size_full: 1.0
+  position_size_cautious: 0.75
+  position_size_reduced: 0.5
+
+  # Averaging parameters
+  avg_max_count: 14  # Max additional averages (14)
+  avg_fixed_amount_ratio: 0.0666667  # 1/15 of initial slot
+  avg_weekly_day: 2  # 0=Mon, 1=Tue, 2=Wed, 3=Thu, 4=Fri, 5=Sat, 6=Sun
+  avg_price_drop_pct: 0.10  # Price must be ≥10% below entry (or last avg)
+
+  # Exit parameters
+  target_pct: 0.0628  # 6.28%
+  max_holding_days: 180  # 9 months maximum hold
+  exit_hopeless_days: 60  # Days in Bear Run + CAR=Avoid to trigger exit
+  review_days: 30  # 30-day review due
+
+  # Transaction costs (India)
+  stcg_tax_rate: 0.20  # 20% Short Term Capital Gains
+  brokerage_pct: 0.00247  # 0.247% both sides
+  dp_charge: 38  # Rs 38 per delivery transaction
+
+  # Chain model
+  chain_start_capital: 15000  # Rs 15,000 initial slot
+  chains_max: 2  # Maximum parallel chains
+
+# Data settings
+data:
+  history_years: 5  # Years of historical data to fetch
+  nifty_500_file: "Sheet3.csv"  # Nifty 500 tickers list
+  db_path: "data/market_data.db"
+  update_frequency: "daily"  # daily, hourly
+
+# Backtesting defaults
+backtest:
+  default_start: "2021-01-01"
+  default_end: "2026-03-30"
+  initial_capital: 15000
+  slippage_pct: 0.001
+
+# Dashboard
+dashboard:
+  page_title: "DMA-DMA+CAR Institutional"
+  refresh_interval: 300  # seconds
+  theme: "light"

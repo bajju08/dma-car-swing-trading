@@ -1,0 +1,30 @@
+DMA-DMA + CAR ENHANCED TRADING SYSTEM  ▸  LIVE DASHBOARD,Unnamed: 1,Unnamed: 2,Unnamed: 3,Unnamed: 4,Unnamed: 5,Unnamed: 6
+"Last Updated: 22 Mar 2026  |  Starting Capital: ₹15,000 per chain  |  Target per trade: 6.28%  |  Strategy: DMA-DMA Filter + CAR (No Stop-Loss)",,,,,,
+,,,,,,
+MARKET REGIME (Manual Update Daily),,,,,,
+Nifty DMA Status,,Unconfirmed,,,ℹ Update from your GSheets scanner,
+% Stocks In Bull Run,,7.6%,,,ℹ From DMA Scanner tab,
+Avg % from 200 DMA,,-7.82%,,,ℹ From DMA Scanner tab,
+Market Regime Decision,,⚠ REDUCED EXPOSURE,,,ℹ AUTO: <15% Bull Run = Reduced,
+Position Size Multiplier,,0.5×,,,ℹ Manual: 0.5x if Unconfirmed / 0x if Bear,
+,,,,,,
+WEEKLY ENTRY DECISION RULES,,,,,,
+⛔ DO NOT ENTER if:,,"Nifty In Bear Run OR <7% stocks In Bull Run → Wait, park idle capital in LTGILTBEES",,,,
+⚠ ENTER at 50% SIZE if:,,Nifty Unconfirmed OR 7-15% stocks In Bull Run → Only Conviction Score ≥9 stocks,,,,
+✅ ENTER FULL SIZE if:,,Nifty In Bull Run AND >15% stocks In Bull Run → All Conviction ≥7 stocks eligible,,,,
+📅 BEST ENTRY DAYS:,,Tuesday (freshest signal) → Wednesday (acceptable) → Friday (post-expiry OK) → AVOID Thursday,,,,
+🔍 SIGNAL AGE RULE:,,Only enter if stock NEWLY turned Bull Run ≤3 trading days ago. Older = missed opportunity,,,,
+,,,,,,
+CONVICTION SCORE SYSTEM (0-10),,,,,,
+Criterion,Max Pts,How to Check,Formula (Excel),,,
+Golden DMA Alignment (50>100>200),,3 pts,DMA Scanner col H,,,"=IF(AND(c>d,d>e),3,0)"
+Distance from 200 DMA (3-12% above),,4 pts,DMA Scanner col G,,,"=IF(AND(g>=3,g<=12),4,IF(AND(g>=0,g<3),2,0))"
+CAR = Buy/Average Out,,2 pts,DMA Scanner col K,,,"=IF(k=""Buy/Average Out"",2,0)"
+Data Integrity (all 3 DMAs distinct),,1 pt,Auto-checked,,,"=IF(AND(c<>d,d<>e,c>0),1,0)"
+"TOTAL — Trade if ≥7, Watch if 5-6, Skip if <5",,10 pts,,,,=sum of above
+,,,,,,
+"30-DAY TRADE REVIEW PROTOCOL  ▸  If open trade > 30 days with no target hit, apply this check:",,,,,,
+Step 1,Check DMA Status in your scanner,,,Still In Bull Run?  →  Continue to Step 2  |  Unconfirmed?  →  Step 3  |  Bear Run?  →  Execute Reverse Trade,,
+Step 2,Check CAR Status,,,CAR = Buy/Average Out?  →  HOLD patiently. Signal intact.  |  CAR = Avoid/Hold?  →  Set 50 DMA as soft exit line,,
+Step 3,Recompute Conviction Score,,,Score ≥7?  →  HOLD  |  Score 5-6?  →  WATCH with tight stop at 50 DMA  |  Score <5?  →  Exit,,
+Step 4,Execute Decision,,,"Bear Run Confirmed  →  Reverse Trade: Sell shares, immediately buy LTGILTBEES with full proceeds",,
